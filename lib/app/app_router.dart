@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
+import 'package:weather/app/data/models/weather_model.dart';
 import 'package:weather/app/pages/weathers/weather_detail_page.dart';
 import 'package:weather/app/pages/weathers/weather_page.dart';
 

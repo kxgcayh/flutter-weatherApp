@@ -113,7 +113,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                     'Today'.text.size(18).extraBold.white.make(),
                     TouchableOpacity(
                       onTap: () => context.router.push(
-                        const WeatherDetailPageRoute(),
+                        WeatherDetailPageRoute(data: data),
                       ),
                       child: '7 days>'
                           .text
