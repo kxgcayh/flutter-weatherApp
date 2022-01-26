@@ -1,16 +1,37 @@
-# weather
+## Installation Weather App
 
-A new Flutter project.
+1. Clone Repository Project
 
-## Getting Started
+```sh
+$ git clone https://github.com/kxgcayh/flutter-weatherApp.git kautsarWeather 
+```
 
-This project is a starting point for a Flutter application.
+2. Go to project repository
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+$ cd kautsarWeather
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+3. Download Resource
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+$ flutter pub get
+```
+
+4. Run Build Runner
+
+```sh
+$ flutter packages pub run build_runner build
+```
+
+5. Check that an Android device is running. If none are shown, follow the device-specific instructions on the [Install](https://flutter.dev/docs/get-started/install) page for your OS.
+
+```sh
+$ flutter devices
+```
+
+6. Run the app with the following command:
+
+```sh
+$ flutter run
+```
