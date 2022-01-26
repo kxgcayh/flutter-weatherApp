@@ -6,6 +6,8 @@ import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/data/repositories/weather_repository.dart';
 import 'package:weather/app/pages/weathers/components/circular_dots_menu.dart';
 import 'package:weather/app/pages/weathers/components/dots_menu_vertical.dart';
+import 'package:weather/app/pages/weathers/components/weather_details_row.dart';
+import 'package:weather/app/pages/weathers/weather_detail_page.dart';
 import 'package:weather/gen/assets.gen.dart';
 
 import 'components/weather_header.dart';
@@ -110,71 +112,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                       .color(const Color(0xFF69B5FF))
                       .makeCentered(),
                 ]),
-                HStack(
-                  [
-                    VStack(
-                      [
-                        Assets.images.wind.image(),
-                        '${data.current?.windSpeed} Mps'
-                            .text
-                            .size(13)
-                            .color(Colors.white.withOpacity(0.75))
-                            .fontWeight(FontWeight.w500)
-                            .make()
-                            .pOnly(top: 4),
-                        'Wind'
-                            .text
-                            .size(12)
-                            .fontWeight(FontWeight.w500)
-                            .color(const Color(0xFF69B5FF))
-                            .make(),
-                      ],
-                      alignment: MainAxisAlignment.center,
-                      crossAlignment: CrossAxisAlignment.center,
-                    ),
-                    VStack(
-                      [
-                        Assets.images.humidity.image(),
-                        '${data.current?.windSpeed} Mps'
-                            .text
-                            .size(13)
-                            .color(Colors.white.withOpacity(0.75))
-                            .fontWeight(FontWeight.w500)
-                            .make()
-                            .pOnly(top: 4),
-                        'Wind'
-                            .text
-                            .size(12)
-                            .fontWeight(FontWeight.w500)
-                            .color(const Color(0xFF69B5FF))
-                            .make(),
-                      ],
-                      alignment: MainAxisAlignment.center,
-                      crossAlignment: CrossAxisAlignment.center,
-                    ),
-                    VStack(
-                      [
-                        Assets.images.coRain.image(),
-                        '${data.current?.windSpeed} Mps'
-                            .text
-                            .size(13)
-                            .color(Colors.white.withOpacity(0.75))
-                            .fontWeight(FontWeight.w500)
-                            .make()
-                            .pOnly(top: 4),
-                        'Wind'
-                            .text
-                            .size(12)
-                            .fontWeight(FontWeight.w500)
-                            .color(const Color(0xFF69B5FF))
-                            .make(),
-                      ],
-                      alignment: MainAxisAlignment.center,
-                      crossAlignment: CrossAxisAlignment.center,
-                    ),
-                  ],
-                  alignment: MainAxisAlignment.spaceAround,
-                ).w(double.infinity).pOnly(top: 25),
+                WeatherDetailsRow(data),
               ]),
             ),
             // VxBox().red100.make().expand(),
