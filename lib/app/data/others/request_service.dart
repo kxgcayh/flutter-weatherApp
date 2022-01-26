@@ -13,7 +13,7 @@ abstract class RequestService {
   }) async {
     try {
       response = await _dio.get(
-        _dio.options.baseUrl + url + '&appid=${SERVICE.KEY}',
+        _dio.options.baseUrl + url + '&appid=${ENV.KEY}',
         cancelToken: cancelToken,
       );
       return response;

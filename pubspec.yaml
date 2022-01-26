@@ -13,14 +13,12 @@ dependencies:
     sdk: flutter
   
   dio: ^4.0.4
-  bloc: ^8.0.2
   logger: ^1.1.0
   freezed: ^1.1.1
   equatable: ^2.0.3
   velocity_x: ^3.3.0
   auto_route: ^3.2.2
   fluttericon: 2.0.0
-  flutter_bloc: ^8.0.1
   flutter_hooks: ^0.18.2
   hooks_riverpod: ^1.0.3
   touchable_opacity: 1.2.0

@@ -4,7 +4,11 @@ import 'package:logger/logger.dart';
 
 Logger logger = Logger(printer: PrettyPrinter());
 
-class SERVICE {
+class ENV {
+  static String IMG_URI(String icon, {String? size}) {
+    return 'http://openweathermap.org/img/wn/$icon${size ?? ''}.png';
+  }
+
   static String get KEY => '95ce33d8122a545db175f6b35c96f27f';
   static String get LAT => '-6.243236260401683';
   static String get LON => '106.93037575531936';
@@ -28,5 +32,12 @@ class MESSAGE {
   static String get CONNECTION_TIMEOUT => "Connection Timeout";
   static String get DEFAULT {
     return 'Please check your internet connection and try again';
+  }
+}
+
+extension StringHelper on String {
+  String removeDouble() {
+    final dotIndex = indexOf('.');
+    return substring(0, dotIndex);
   }
 }
