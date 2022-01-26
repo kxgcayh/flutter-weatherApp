@@ -1,6 +1,6 @@
 class BaseWeather {
-  dynamic lat;
-  dynamic lon;
+  dynamic lat; // double
+  dynamic lon; // double
   String? timezone;
   int? timezoneOffset;
   Current? current;
@@ -61,17 +61,17 @@ class Current {
   int? dt;
   int? sunrise;
   int? sunset;
-  dynamic temp;
-  dynamic feelsLike;
+  dynamic temp; // double
+  dynamic feelsLike; // double
   int? pressure;
   int? humidity;
-  dynamic dewPoint;
+  dynamic dewPoint; // double
   dynamic uvi;
   int? clouds;
   int? visibility;
-  dynamic windSpeed;
+  dynamic windSpeed; // double
   int? windDeg;
-  dynamic windGust;
+  dynamic windGust; // double
   List<Weather>? weather;
 
   Current(
@@ -164,19 +164,19 @@ class Weather {
 
 class Hourly {
   int? dt;
-  dynamic temp;
-  dynamic feelsLike;
+  dynamic temp; // double
+  dynamic feelsLike; // double
   int? pressure;
   int? humidity;
-  dynamic dewPoint;
+  dynamic dewPoint; // double
   dynamic uvi;
   int? clouds;
   int? visibility;
-  dynamic windSpeed;
+  dynamic windSpeed; // double
   int? windDeg;
-  dynamic windGust;
+  dynamic windGust; // double
   List<Weather>? weather;
-  dynamic pop;
+  dynamic pop; // double
   Rain? rain;
 
   Hourly(
@@ -245,7 +245,7 @@ class Hourly {
 }
 
 class Rain {
-  dynamic d1h;
+  dynamic d1h; // double
 
   Rain({this.d1h});
 
@@ -266,19 +266,19 @@ class Daily {
   int? sunset;
   int? moonrise;
   int? moonset;
-  dynamic moonPhase;
+  dynamic moonPhase; // double
   Temp? temp;
   FeelsLike? feelsLike;
   int? pressure;
   int? humidity;
-  dynamic dewPoint;
-  dynamic windSpeed;
+  dynamic dewPoint; // double
+  dynamic windSpeed; // double
   int? windDeg;
-  dynamic windGust;
+  dynamic windGust; // double
   List<Weather>? weather;
   int? clouds;
-  dynamic pop;
-  dynamic rain;
+  dynamic pop; // double
+  dynamic rain; // double
   dynamic uvi;
 
   Daily(
@@ -363,12 +363,12 @@ class Daily {
 }
 
 class Temp {
-  dynamic day;
-  dynamic min;
-  dynamic max;
-  dynamic night;
-  dynamic eve;
-  dynamic morn;
+  dynamic day; // double
+  dynamic min; // double
+  dynamic max; // double
+  dynamic night; // double
+  dynamic eve; // double
+  dynamic morn; // double
 
   Temp({this.day, this.min, this.max, this.night, this.eve, this.morn});
 
@@ -394,10 +394,10 @@ class Temp {
 }
 
 class FeelsLike {
-  dynamic day;
-  dynamic night;
-  dynamic eve;
-  dynamic morn;
+  dynamic day; // double
+  dynamic night; // double
+  dynamic eve; // double
+  dynamic morn; // double
 
   FeelsLike({this.day, this.night, this.eve, this.morn});
 
