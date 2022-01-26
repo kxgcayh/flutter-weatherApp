@@ -99,7 +99,8 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                         .extraBold
                         .white
                         .makeCentered(),
-                    '$time'
+                    time
+                        .todayFormat()
                         .text
                         .center
                         .fontWeight(FontWeight.w500)

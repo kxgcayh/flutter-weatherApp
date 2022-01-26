@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 Logger logger = Logger(printer: PrettyPrinter());
@@ -57,5 +58,12 @@ extension DateModifier on DateTime {
     } else {
       return 'Just Now';
     }
+  }
+
+  String todayFormat() {
+    final _fmt = DateFormat('d MMMM');
+    final formatted = _fmt.format(this);
+    bool isToday = formatted == _fmt.format(DateTime.now());
+    return '${isToday ? 'Today' : convertToAgo()}, $formatted';
   }
 }
