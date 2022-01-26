@@ -1,4 +1,5 @@
 ## Installation Weather App
+## Download apk at [Google Drive](https://drive.google.com/file/d/1Ldt-4_sURIDA3iipSmzM6CJzG0rTAiQM/view?usp=sharing)
 
 1. Clone Repository Project
 
@@ -35,3 +36,8 @@ $ flutter devices
 ```sh
 $ flutter run
 ```
+
+![Main Weather Page](https://github.com/kxgcayh/flutter-weatherApp/blob/main/assets/screenshots/_weather.png)
+
+![Detail Weather Page](https://github.com/kxgcayh/flutter-weatherApp/blob/main/assets/screenshots/_detail.png)
+
