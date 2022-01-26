@@ -34,7 +34,7 @@ class VerticalWeatherContainer extends StatelessWidget {
           alignment: Alignment.center,
           image: CachedNetworkImageProvider(
             ENV.IMG_URI(
-              '${data.current?.weather?.first.icon}',
+              '${data.hourly?[time].weather?.first.icon}',
               size: '@4x',
             ),
           ),
