@@ -10,7 +10,7 @@ class ENV {
     return 'http://openweathermap.org/img/wn/$icon${size ?? ''}.png';
   }
 
-  static String get KEY => '95ce33d8122a545db175f6b35c96f27f';
+  static String get KEY => '45865970ebbfbc127eb2a16dd7f753e7';
   static String get LAT => '-6.243236260401683';
   static String get LON => '106.93037575531936';
 }
