@@ -1,8 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather/app/data/models/weather_model.dart';
-import 'package:weather/app/data/others/helpers.dart';
-import 'package:weather/app/data/providers/weather_provider.dart';
 import 'package:weather/app/data/models/weather_state.dart';
+import 'package:weather/app/data/providers/weather_provider.dart';
 
 final weatherRepository = Provider<WeatherRepository>((ref) {
   final provider = ref.read(weatherProvider);
@@ -42,9 +41,7 @@ class WeatherStateNotifier extends StateNotifier<WeatherState> {
           weather: _baseWeather!,
           updatedAt: DateTime.now(),
         );
-        logger.d(state);
       }
-      // logger.i(state);
     } catch (e) {
       state = WeatherState.error('$e');
       // logger.e(state);

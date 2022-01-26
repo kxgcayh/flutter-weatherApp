@@ -1,10 +1,24 @@
+import 'package:hive/hive.dart';
+part 'weather_model.g.dart';
+
+const String baseWeatherBox = 'baseWeatherBox';
+const String baseWeatherBoxKey = 'baseWeatherBoxKey';
+
+@HiveType(typeId: 0, adapterName: 'BaseWeatherAdapter')
 class BaseWeather {
+  @HiveField(0)
   dynamic lat; // double
+  @HiveField(1)
   dynamic lon; // double
+  @HiveField(2)
   String? timezone;
+  @HiveField(3)
   int? timezoneOffset;
+  @HiveField(4)
   Current? current;
+  @HiveField(5)
   List<Hourly>? hourly;
+  @HiveField(6)
   List<Daily>? daily;
 
   BaseWeather({
@@ -57,21 +71,37 @@ class BaseWeather {
   }
 }
 
+@HiveType(typeId: 1, adapterName: 'CurrentAdapter')
 class Current {
+  @HiveField(0)
   int? dt;
+  @HiveField(1)
   int? sunrise;
+  @HiveField(2)
   int? sunset;
+  @HiveField(3)
   dynamic temp; // double
+  @HiveField(4)
   dynamic feelsLike; // double
+  @HiveField(5)
   int? pressure;
+  @HiveField(6)
   int? humidity;
+  @HiveField(7)
   dynamic dewPoint; // double
+  @HiveField(8)
   dynamic uvi;
+  @HiveField(9)
   int? clouds;
+  @HiveField(10)
   int? visibility;
+  @HiveField(11)
   dynamic windSpeed; // double
+  @HiveField(12)
   int? windDeg;
+  @HiveField(13)
   dynamic windGust; // double
+  @HiveField(14)
   List<Weather>? weather;
 
   Current(
@@ -137,10 +167,15 @@ class Current {
   }
 }
 
+@HiveType(typeId: 7, adapterName: 'WeatherAdapter')
 class Weather {
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? main;
+  @HiveField(2)
   String? description;
+  @HiveField(3)
   String? icon;
 
   Weather({this.id, this.main, this.description, this.icon});
@@ -162,21 +197,37 @@ class Weather {
   }
 }
 
+@HiveType(typeId: 2, adapterName: 'HourlyAdapter')
 class Hourly {
+  @HiveField(0)
   int? dt;
+  @HiveField(1)
   dynamic temp; // double
+  @HiveField(2)
   dynamic feelsLike; // double
+  @HiveField(3)
   int? pressure;
+  @HiveField(4)
   int? humidity;
+  @HiveField(5)
   dynamic dewPoint; // double
+  @HiveField(6)
   dynamic uvi;
+  @HiveField(7)
   int? clouds;
+  @HiveField(8)
   int? visibility;
+  @HiveField(9)
   dynamic windSpeed; // double
+  @HiveField(10)
   int? windDeg;
+  @HiveField(11)
   dynamic windGust; // double
+  @HiveField(12)
   List<Weather>? weather;
+  @HiveField(13)
   dynamic pop; // double
+  @HiveField(14)
   Rain? rain;
 
   Hourly(
@@ -244,7 +295,9 @@ class Hourly {
   }
 }
 
+@HiveType(typeId: 4, adapterName: 'RainAdapter')
 class Rain {
+  @HiveField(0)
   dynamic d1h; // double
 
   Rain({this.d1h});
@@ -260,25 +313,45 @@ class Rain {
   }
 }
 
+@HiveType(typeId: 3, adapterName: 'DailyAdapter')
 class Daily {
+  @HiveField(0)
   int? dt;
+  @HiveField(1)
   int? sunrise;
+  @HiveField(2)
   int? sunset;
+  @HiveField(3)
   int? moonrise;
+  @HiveField(4)
   int? moonset;
+  @HiveField(5)
   dynamic moonPhase; // double
+  @HiveField(6)
   Temp? temp;
+  @HiveField(7)
   FeelsLike? feelsLike;
+  @HiveField(8)
   int? pressure;
+  @HiveField(9)
   int? humidity;
+  @HiveField(10)
   dynamic dewPoint; // double
+  @HiveField(11)
   dynamic windSpeed; // double
+  @HiveField(12)
   int? windDeg;
+  @HiveField(13)
   dynamic windGust; // double
+  @HiveField(14)
   List<Weather>? weather;
+  @HiveField(15)
   int? clouds;
-  dynamic pop; // double
+  @HiveField(16)
+  dynamic pop;
+  @HiveField(17) // double
   dynamic rain; // double
+  @HiveField(18)
   dynamic uvi;
 
   Daily(
@@ -362,12 +435,19 @@ class Daily {
   }
 }
 
+@HiveType(typeId: 5, adapterName: 'TempAdapter')
 class Temp {
+  @HiveField(0)
   dynamic day; // double
+  @HiveField(1)
   dynamic min; // double
+  @HiveField(2)
   dynamic max; // double
+  @HiveField(3)
   dynamic night; // double
+  @HiveField(4)
   dynamic eve; // double
+  @HiveField(5)
   dynamic morn; // double
 
   Temp({this.day, this.min, this.max, this.night, this.eve, this.morn});
@@ -393,10 +473,15 @@ class Temp {
   }
 }
 
+@HiveType(typeId: 6, adapterName: 'FeelsLikeAdapter')
 class FeelsLike {
+  @HiveField(0)
   dynamic day; // double
+  @HiveField(1)
   dynamic night; // double
+  @HiveField(2)
   dynamic eve; // double
+  @HiveField(3)
   dynamic morn; // double
 
   FeelsLike({this.day, this.night, this.eve, this.morn});

@@ -1,19 +1,21 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/iconic_icons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:weather/app/app_router.dart';
 import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/data/repositories/weather_repository.dart';
 import 'package:weather/app/pages/weathers/components/circular_dots_menu.dart';
 import 'package:weather/app/pages/weathers/components/dots_menu_vertical.dart';
+import 'package:weather/app/pages/weathers/components/text_temperature.dart';
 import 'package:weather/app/pages/weathers/components/vertical_weather_container.dart';
 import 'package:weather/app/pages/weathers/components/weather_details_row.dart';
-
-import '../../app_router.dart';
-import 'components/text_temperature.dart';
-import 'components/weather_header.dart';
+import 'package:weather/app/pages/weathers/components/weather_header.dart';
+import 'package:weather/gen/assets.gen.dart';
 
 class WeatherPage extends ConsumerStatefulWidget {
   const WeatherPage({Key? key}) : super(key: key);
@@ -32,14 +34,14 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
   @override
   Widget build(context) {
     final state = ref.watch(weatherStateNotifier);
-    return state.when(
-      initial: () => 'Please Wait'.text.makeCentered(),
-      loading: () => const CircularProgressIndicator().centered(),
-      error: (e) => '$e'.text.makeCentered(),
-      data: (data, time) {
-        return Scaffold(
-          backgroundColor: Colors.black,
-          body: VStack([
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: state.when(
+        initial: () => 'Please Wait'.text.white.makeCentered(),
+        loading: () => const CircularProgressIndicator().centered(),
+        error: (e) => '$e'.text.white.makeCentered(),
+        data: (data, time) {
+          return VStack([
             WeatherHeader(
               context.screenHeight / 1.3,
               headers: [
@@ -78,12 +80,21 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
               ],
               content: VStack(
                 [
-                  Image.network(
-                    ENV.IMG_URI(
-                      '${data.current?.weather?.first.icon}',
-                      size: '@4x',
+                  OctoImage(
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                    image: CachedNetworkImageProvider(
+                      ENV.IMG_URI(
+                        '${data.current?.weather?.first.icon}',
+                        size: '@4x',
+                      ),
                     ),
-                    filterQuality: FilterQuality.high,
+                    placeholderBuilder: (context) {
+                      return Assets.images.weather.image(fit: BoxFit.contain);
+                    },
+                    errorBuilder: (context, error, stackrace) {
+                      return Assets.images.weather.image();
+                    },
                   ).box.width(150).height(150).makeCentered(),
                   VStack([
                     TextTemperature(
@@ -144,9 +155,20 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                 ).w(double.infinity).px(10),
               ]).px(35),
             ).width(double.infinity).make(),
-          ]).scrollVertical(),
-        );
-      },
+          ]).scrollVertical();
+        },
+      ),
     );
+    // return state.when(
+    //   initial: () => 'Please Wait'.text.makeCentered(),
+    //   loading: () => const CircularProgressIndicator().centered(),
+    //   error: (e) => '$e'.text.makeCentered(),
+    //   data: (data, time) {
+    //     return Scaffold(
+    //       backgroundColor: Colors.black,
+    //       body: ,
+    //     );
+    //   },
+    // );
   }
 }

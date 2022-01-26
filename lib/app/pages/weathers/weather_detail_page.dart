@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:weather/app/data/models/weather_model.dart';
 import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/pages/weathers/components/text_temperature.dart';
 import 'package:weather/app/pages/weathers/components/weather_header.dart';
+import 'package:weather/gen/assets.gen.dart';
 
 import 'components/circular_dots_menu.dart';
 import 'components/dots_menu_vertical.dart';
@@ -39,12 +42,21 @@ class WeatherDetailPage extends StatelessWidget {
           ],
           content: VStack([
             HStack([
-              Image.network(
-                ENV.IMG_URI(
-                  '${data.current?.weather?.first.icon}',
-                  size: '@4x',
+              OctoImage(
+                fit: BoxFit.contain,
+                alignment: Alignment.center,
+                image: CachedNetworkImageProvider(
+                  ENV.IMG_URI(
+                    '${data.current?.weather?.first.icon}',
+                    size: '@4x',
+                  ),
                 ),
-                filterQuality: FilterQuality.high,
+                placeholderBuilder: (context) {
+                  return Assets.images.weather.image(fit: BoxFit.contain);
+                },
+                errorBuilder: (context, error, stackrace) {
+                  return Assets.images.weather.image();
+                },
               ).box.width(166).height(166).make(),
               VStack([
                 'Tomorrow'
@@ -113,12 +125,22 @@ class WeatherDetailPage extends StatelessWidget {
                       .make(),
                   HStack(
                     [
-                      Image.network(
-                        ENV.IMG_URI(
-                          '${data.daily?[index].weather?.first.icon}',
-                          size: '@4x',
+                      OctoImage(
+                        fit: BoxFit.contain,
+                        alignment: Alignment.center,
+                        image: CachedNetworkImageProvider(
+                          ENV.IMG_URI(
+                            '${data.daily?[index].weather?.first.icon}',
+                            size: '@4x',
+                          ),
                         ),
-                        filterQuality: FilterQuality.high,
+                        placeholderBuilder: (context) {
+                          return Assets.images.weather
+                              .image(fit: BoxFit.contain);
+                        },
+                        errorBuilder: (context, error, stackrace) {
+                          return Assets.images.weather.image();
+                        },
                       ).box.width(46).height(46).make(),
                       '${data.daily?[index].weather?.first.main}'
                           .text

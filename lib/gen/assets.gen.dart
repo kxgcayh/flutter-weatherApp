@@ -17,6 +17,9 @@ class $AssetsImagesGen {
   AssetGenImage get humidity =>
       const AssetGenImage('assets/images/humidity.png');
 
+  /// File path: assets/images/weather.png
+  AssetGenImage get weather => const AssetGenImage('assets/images/weather.png');
+
   /// File path: assets/images/wind.png
   AssetGenImage get wind => const AssetGenImage('assets/images/wind.png');
 }
