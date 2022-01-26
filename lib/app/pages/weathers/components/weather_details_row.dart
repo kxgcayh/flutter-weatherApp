@@ -3,9 +3,19 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:weather/app/data/models/weather_model.dart';
 import 'package:weather/gen/assets.gen.dart';
 
+enum WeatherType { current, daily }
+
 class WeatherDetailsRow extends StatelessWidget {
-  const WeatherDetailsRow(this.data, {Key? key}) : super(key: key);
+  const WeatherDetailsRow(
+    this.data, {
+    Key? key,
+    this.type = WeatherType.current,
+    this.dayIndex = 0,
+  }) : super(key: key);
+
   final BaseWeather data;
+  final WeatherType? type;
+  final int? dayIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,9 @@ class WeatherDetailsRow extends StatelessWidget {
         VStack(
           [
             Assets.images.wind.image(),
-            '${data.current?.windSpeed} Mps'
+            Text(type == WeatherType.current
+                    ? '${data.current?.windSpeed} Mps'
+                    : '${data.daily?[dayIndex!].windSpeed} Mps')
                 .text
                 .size(13)
                 .color(Colors.white.withOpacity(0.75))
@@ -34,7 +46,9 @@ class WeatherDetailsRow extends StatelessWidget {
         VStack(
           [
             Assets.images.humidity.image(),
-            '${data.current?.windSpeed}%'
+            Text(type == WeatherType.current
+                    ? '${data.current?.humidity}%'
+                    : '${data.daily?[dayIndex!].humidity}%')
                 .text
                 .size(13)
                 .color(Colors.white.withOpacity(0.75))
@@ -54,7 +68,9 @@ class WeatherDetailsRow extends StatelessWidget {
         VStack(
           [
             Assets.images.coRain.image(),
-            '${data.current?.clouds}%'
+            Text(type == WeatherType.current
+                    ? '${data.current?.clouds}%'
+                    : '${data.daily?[dayIndex!].clouds}%')
                 .text
                 .size(13)
                 .color(Colors.white.withOpacity(0.75))
