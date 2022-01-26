@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:fluttericon/iconic_icons.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:weather/app/data/models/weather_model.dart';
 import 'package:weather/app/data/others/helpers.dart';
@@ -23,7 +23,7 @@ class WeatherDetailPage extends StatelessWidget {
         WeatherHeader(
           context.screenHeight / 2,
           headers: [
-            CircularDotsMenu(onTap: () {}),
+            CircularDotsMenu(onTap: () => context.router.pop()),
             VStack([
               HStack([
                 const Icon(FontAwesome5.calendar, color: Colors.white),
@@ -34,7 +34,7 @@ class WeatherDetailPage extends StatelessWidget {
                   .box
                   .withConstraints(const BoxConstraints(minWidth: 220))
                   .make(),
-            ]),
+            ]).pOnly(top: 10),
             DotsMenuVerticalWidget(onTap: () {}),
           ],
           content: VStack([
@@ -82,7 +82,7 @@ class WeatherDetailPage extends StatelessWidget {
             ]),
             WeatherDetailsRow(data, type: WeatherType.daily, dayIndex: 1),
           ]),
-        ).pOnly(top: 10),
+        ),
         VStack(
           data.daily!.asMap().entries.mapIndexed((value, index) {
             if (index <= 6) {

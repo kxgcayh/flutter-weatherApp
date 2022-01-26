@@ -4,8 +4,6 @@ import 'package:fluttericon/iconic_icons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:weather/app/data/models/weather_model.dart';
-import '../../app_router.dart';
 import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/data/repositories/weather_repository.dart';
 import 'package:weather/app/pages/weathers/components/circular_dots_menu.dart';
@@ -13,6 +11,7 @@ import 'package:weather/app/pages/weathers/components/dots_menu_vertical.dart';
 import 'package:weather/app/pages/weathers/components/vertical_weather_container.dart';
 import 'package:weather/app/pages/weathers/components/weather_details_row.dart';
 
+import '../../app_router.dart';
 import 'components/text_temperature.dart';
 import 'components/weather_header.dart';
 
@@ -62,7 +61,11 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                     child: HStack([
                       VxCircle(backgroundColor: Colors.yellow).w(6).h(6),
                       const SizedBox(width: 5),
-                      'Updated at $time'.text.size(11).white.make(),
+                      'Updated at ${time.convertToAgo()}'
+                          .text
+                          .size(11)
+                          .white
+                          .make(),
                     ]).px(10),
                   )
                       .height(23)

@@ -39,7 +39,7 @@ class WeatherHeader extends StatelessWidget {
               HStack(
                 headers,
                 alignment: MainAxisAlignment.spaceAround,
-                // crossAlignment: CrossAxisAlignment.center,
+                crossAlignment: CrossAxisAlignment.center,
               ).pOnly(top: 30).w(context.screenWidth),
               if (content != null) content!,
             ]),
