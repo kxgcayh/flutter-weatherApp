@@ -6,6 +6,7 @@ import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/data/repositories/weather_repository.dart';
 import 'package:weather/app/pages/weathers/components/circular_dots_menu.dart';
 import 'package:weather/app/pages/weathers/components/dots_menu_vertical.dart';
+import 'package:weather/gen/assets.gen.dart';
 
 import 'components/weather_header.dart';
 
@@ -35,7 +36,7 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
           backgroundColor: Colors.black,
           body: VStack([
             WeatherHeader(
-              context.screenHeight / 1.2,
+              context.screenHeight / 1.3,
               headers: [
                 CircularDotsMenu(onTap: () {}),
                 VStack([
@@ -70,43 +71,110 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                   ),
                   filterQuality: FilterQuality.high,
                 ).box.width(150).height(150).makeCentered(),
+                VStack([
+                  HStack(
+                    [
+                      Text(
+                        '${data.current?.temp}'.contains('.')
+                            ? '${data.current?.temp}'.removeDouble()
+                            : '${data.current?.temp}',
+                      )
+                          .text
+                          .size(116)
+                          .fontWeight(FontWeight.w700)
+                          .white
+                          .center
+                          .make(),
+                      VxCircle(
+                        border: Border.all(
+                          color: const Color(0xFF82B5F8),
+                          width: 4,
+                        ),
+                        backgroundColor: Colors.transparent,
+                      ).w(19).h(19),
+                    ],
+                    crossAlignment: CrossAxisAlignment.start,
+                  ).centered().pOnly(left: 19),
+                  '${data.current?.weather?.first.main}'
+                      .text
+                      .size(22)
+                      .center
+                      .extraBold
+                      .white
+                      .makeCentered(),
+                  '$time'
+                      .text
+                      .center
+                      .fontWeight(FontWeight.w500)
+                      .size(12)
+                      .color(const Color(0xFF69B5FF))
+                      .makeCentered(),
+                ]),
                 HStack(
                   [
-                    Text(
-                      '${data.current?.temp}'.contains('.')
-                          ? '${data.current?.temp}'.removeDouble()
-                          : '${data.current?.temp}',
-                    )
-                        .text
-                        .size(116)
-                        .fontWeight(FontWeight.w700)
-                        .white
-                        .center
-                        .make(),
-                    VxCircle(
-                      border: Border.all(
-                        color: const Color(0xFF82B5F8),
-                        width: 4,
-                      ),
-                      backgroundColor: Colors.transparent,
-                    ).w(19).h(19),
+                    VStack(
+                      [
+                        Assets.images.wind.image(),
+                        '${data.current?.windSpeed} Mps'
+                            .text
+                            .size(13)
+                            .color(Colors.white.withOpacity(0.75))
+                            .fontWeight(FontWeight.w500)
+                            .make()
+                            .pOnly(top: 4),
+                        'Wind'
+                            .text
+                            .size(12)
+                            .fontWeight(FontWeight.w500)
+                            .color(const Color(0xFF69B5FF))
+                            .make(),
+                      ],
+                      alignment: MainAxisAlignment.center,
+                      crossAlignment: CrossAxisAlignment.center,
+                    ),
+                    VStack(
+                      [
+                        Assets.images.humidity.image(),
+                        '${data.current?.windSpeed} Mps'
+                            .text
+                            .size(13)
+                            .color(Colors.white.withOpacity(0.75))
+                            .fontWeight(FontWeight.w500)
+                            .make()
+                            .pOnly(top: 4),
+                        'Wind'
+                            .text
+                            .size(12)
+                            .fontWeight(FontWeight.w500)
+                            .color(const Color(0xFF69B5FF))
+                            .make(),
+                      ],
+                      alignment: MainAxisAlignment.center,
+                      crossAlignment: CrossAxisAlignment.center,
+                    ),
+                    VStack(
+                      [
+                        Assets.images.coRain.image(),
+                        '${data.current?.windSpeed} Mps'
+                            .text
+                            .size(13)
+                            .color(Colors.white.withOpacity(0.75))
+                            .fontWeight(FontWeight.w500)
+                            .make()
+                            .pOnly(top: 4),
+                        'Wind'
+                            .text
+                            .size(12)
+                            .fontWeight(FontWeight.w500)
+                            .color(const Color(0xFF69B5FF))
+                            .make(),
+                      ],
+                      alignment: MainAxisAlignment.center,
+                      crossAlignment: CrossAxisAlignment.center,
+                    ),
                   ],
-                  crossAlignment: CrossAxisAlignment.start,
-                ).centered().pOnly(left: 19),
-                '${data.current?.weather?.first.main}'
-                    .text
-                    .size(22)
-                    .center
-                    .extraBold
-                    .white
-                    .makeCentered(),
-                '$time'
-                    .text
-                    .center
-                    .fontWeight(FontWeight.w500)
-                    .size(12)
-                    .color(const Color(0xFF69B5FF))
-                    .makeCentered(),
+                  alignment: MainAxisAlignment.spaceAround,
+                ).w(double.infinity).pOnly(top: 25),
               ]),
             ),
             // VxBox().red100.make().expand(),
