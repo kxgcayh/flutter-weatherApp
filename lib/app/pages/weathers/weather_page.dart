@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/iconic_icons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:weather/app/data/models/weather_model.dart';
+import '../../app_router.dart';
 import 'package:weather/app/data/others/helpers.dart';
 import 'package:weather/app/data/repositories/weather_repository.dart';
 import 'package:weather/app/pages/weathers/components/circular_dots_menu.dart';
@@ -110,13 +112,16 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                   [
                     'Today'.text.size(18).extraBold.white.make(),
                     TouchableOpacity(
-                      onTap: () {},
+                      onTap: () => context.router.push(
+                        const WeatherDetailPageRoute(),
+                      ),
                       child: '7 days>'
                           .text
                           .color(const Color(0xFF687B92))
                           .size(12)
                           .make(),
                     ),
+                    // WeatherDetailPageRoute(),
                   ],
                   alignment: MainAxisAlignment.spaceBetween,
                 ).w(double.infinity).py(14),

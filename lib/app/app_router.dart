@@ -12,9 +12,10 @@ part 'app_router.gr.dart';
       initial: true,
       path: '/weather',
       page: WeatherPage,
-      children: [
-        AutoRoute(path: 'detail', page: WeatherDetailPage),
-      ],
+    ),
+    AutoRoute(
+      path: '/weather/detail',
+      page: WeatherDetailPage,
     ),
   ],
 )

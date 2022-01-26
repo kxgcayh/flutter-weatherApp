@@ -31,19 +31,15 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig('/#redirect',
             path: '/', redirectTo: '/weather', fullMatch: true),
-        RouteConfig(WeatherPageRoute.name, path: '/weather', children: [
-          RouteConfig(WeatherDetailPageRoute.name,
-              path: 'detail', parent: WeatherPageRoute.name)
-        ])
+        RouteConfig(WeatherPageRoute.name, path: '/weather'),
+        RouteConfig(WeatherDetailPageRoute.name, path: '/weather/detail')
       ];
 }
 
 /// generated route for
 /// [WeatherPage]
 class WeatherPageRoute extends PageRouteInfo<void> {
-  const WeatherPageRoute({List<PageRouteInfo>? children})
-      : super(WeatherPageRoute.name,
-            path: '/weather', initialChildren: children);
+  const WeatherPageRoute() : super(WeatherPageRoute.name, path: '/weather');
 
   static const String name = 'WeatherPageRoute';
 }
@@ -52,7 +48,7 @@ class WeatherPageRoute extends PageRouteInfo<void> {
 /// [WeatherDetailPage]
 class WeatherDetailPageRoute extends PageRouteInfo<void> {
   const WeatherDetailPageRoute()
-      : super(WeatherDetailPageRoute.name, path: 'detail');
+      : super(WeatherDetailPageRoute.name, path: '/weather/detail');
 
   static const String name = 'WeatherDetailPageRoute';
 }
