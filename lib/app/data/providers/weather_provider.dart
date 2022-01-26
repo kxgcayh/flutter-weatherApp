@@ -13,7 +13,7 @@ class WeatherProvider extends RequestService {
     BaseWeather baseWeather;
     try {
       response = await getConnect(
-        '?lat=${lat ?? ENV.LAT}&lon=${lon ?? ENV.LON}&exclude=minutely&units=metric',
+        '?lat=${lat ?? ENV.LAT}&lon=${lon ?? ENV.LON}&units=metric&exclude=minutely',
       );
       baseWeather = BaseWeather.fromJson(response.data);
       logger.i(baseWeather);
