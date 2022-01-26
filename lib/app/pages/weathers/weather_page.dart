@@ -53,7 +53,11 @@ class _WeatherPageState extends ConsumerState<WeatherPage> {
                         .white
                         .fontWeight(FontWeight.w700)
                         .make()
-                  ]),
+                  ])
+                      .centered()
+                      .box
+                      .withConstraints(const BoxConstraints(minWidth: 220))
+                      .make(),
                   VxBox(
                     child: HStack([
                       VxCircle(backgroundColor: Colors.yellow).w(6).h(6),

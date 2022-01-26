@@ -10,12 +10,14 @@ class TextTemperature extends StatelessWidget {
     required this.circleSize,
     this.borderWidth = 2,
     this.color,
+    this.fontWeight,
   }) : super(key: key);
   final String text;
   final double textSize;
   final double circleSize;
   final double borderWidth;
   final Color? color;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class TextTemperature extends StatelessWidget {
         )
             .text
             .size(textSize)
-            .fontWeight(FontWeight.w700)
+            .fontWeight(fontWeight ?? FontWeight.w700)
             .color(color ?? Colors.white)
             .center
             .make(),
